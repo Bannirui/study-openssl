@@ -1,8 +1,14 @@
 #include <iostream>
 
+#include"x_read_task.h"
 #include "x_crypt.h"
 
 int main() {
+    XReadTask r_task;
+    r_task.Init("asset/tmp.txt");
+    r_task.Start();
+    r_task.Wait();
+
     XCrypt crypt;
     crypt.Init("12345678");
     char en_out[1024] = {0};

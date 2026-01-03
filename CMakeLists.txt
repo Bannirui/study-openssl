@@ -56,12 +56,6 @@ set(my_exec_targets earth box point_light spot_light scene model)
 # 添加头文件的目的仅仅是为了让IDEA识别到 新建文件的时候添加索引
 add_executable(${PROJECT_NAME} ${srcs} ${hdrs})
 
-if (LINUX)
-    #target_link_libraries(${target} PRIVATE dl GL GLU X11)
-elseif (WIN32)
-    #target_link_libraries(${target} PRIVATE opengl32)
-endif ()
-
 # 拷贝资源文件到构建目录和运行目录
 add_custom_target(copy_assets
         COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_CURRENT_SOURCE_DIR}/asset" "${CMAKE_CURRENT_BINARY_DIR}/asset"
@@ -70,7 +64,7 @@ add_custom_target(copy_assets
 )
 
 # 构建时触发资源文件复制
-add_dependencies(${target} copy_assets)
+add_dependencies(${PROJECT_NAME} copy_assets)
 
 # 向项目添加全局的预编译宏
 add_definitions(-DDEBUG)
@@ -80,4 +74,4 @@ if (APPLE)
     add_definitions(-DGL_SILENCE_DEPRECATION)
 endif ()
 
-target_link_libraries(${PROJECT_NAME} OpenSSL::SSL OpenSSL::Crypto)
+target_link_libraries(${PROJECT_NAME} PRIVATE OpenSSL::SSL OpenSSL::Crypto)
