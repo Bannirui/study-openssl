@@ -31,6 +31,7 @@ void XWriteTask::StartImpl() {
             break;
         }
     }
+    this->ofs_.flush();
     this->ofs_.close();
     std::cout << "XWriteTask::StartImpl() end" << std::endl;
 }

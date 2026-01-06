@@ -22,13 +22,21 @@ void XCryptTask::StartImpl() {
             continue;
         }
         std::cout << "crypt task, get data size " << data->size() << std::endl;
-        auto out = XData::Make(mem_pool_);
+        std::shared_ptr<XData> out = XData::Make(mem_pool_);
         int out_size = out->size() + this->enc_->GetPadding(data->size());
         out->New(out_size);
-        int data_size = this->enc_->Encrypt((char *) data->data(), data->size(), (char *) out->data());
+        int data_size = 0;
+        bool isEnd = data->end();
+        std::cout << "end flag= " << isEnd << std::endl;
+        if (this->is_encrypt_) {
+            data_size = this->enc_->Encrypt((char *) data->data(), data->size(), (char *) out->data(), isEnd);
+            std::cout << "crypt finish, size " << data_size << ", data is " << (char *) out->data() << std::endl;
+        } else {
+            data_size = this->enc_->Decrypt((char *) data->data(), data->size(), (char *) out->data(), isEnd);
+            std::cout << "dcrypt finish, size " << data_size << ", data is " << (char *) out->data() << std::endl;
+        }
         out->set_size(data_size);
-        std::cout << "crypt finish, size " << data_size << std::endl;
-        out->set_end(data->end());
+        out->set_end(isEnd);
         if (this->next_) {
             this->next_->PushBack(out);
         }

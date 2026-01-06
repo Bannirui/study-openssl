@@ -39,8 +39,9 @@ void XReadTask::StartImpl() {
             break;
         }
         data->set_size(ifs_.gcount());
-        std::cout << "read " << ifs_.gcount() << " bytes, addr is " << buf << std::endl;
+        std::cout << "read " << ifs_.gcount() << " bytes, data is " << (char *) buf << std::endl;
         if (this->ifs_.eof()) {
+            std::cout << "read eof" << std::endl;
             data->set_end(true);
         }
         if (this->next_) {
