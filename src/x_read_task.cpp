@@ -8,7 +8,7 @@
 
 #include "x_data.h"
 
-bool XReadTask::Init(std::string file_name) {
+bool XReadTask::Init(const std::string &file_name) {
     if (file_name.empty()) {
         return false;
     }
@@ -47,5 +47,6 @@ void XReadTask::StartImpl() {
             this->next_->PushBack(data);
         }
     }
+    this->ifs_.close();
     std::cout << "XReadTask::StartImpl() end" << std::endl;
 }

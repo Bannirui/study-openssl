@@ -13,6 +13,10 @@
 
 class XIOStream {
 public:
+    XIOStream() = default;
+
+    virtual ~XIOStream() = default;
+
     void Start();
 
     void Wait();
