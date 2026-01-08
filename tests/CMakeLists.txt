@@ -21,3 +21,11 @@ add_dependencies(file_encrypt_test copy_assets)
 add_executable(file_decrypt_test file_decrypt_test.cpp)
 target_link_libraries(file_decrypt_test PUBLIC study-openssl)
 add_dependencies(file_decrypt_test copy_assets)
+
+add_executable(batch_file_encrypt_test batch_file_encrypt_test.cpp)
+target_link_libraries(batch_file_encrypt_test PUBLIC study-openssl)
+add_dependencies(batch_file_encrypt_test copy_assets)
+
+add_executable(batch_file_decrypt_test batch_file_decrypt_test.cpp)
+target_link_libraries(batch_file_decrypt_test PUBLIC study-openssl)
+add_dependencies(batch_file_decrypt_test copy_assets)
