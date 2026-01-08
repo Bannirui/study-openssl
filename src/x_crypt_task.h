@@ -11,7 +11,7 @@ class XCrypt;
 class XCryptTask : public XIOStream
 {
 public:
-    void Init(std::string& password);
+    void Init(const std::string& password);
 
     void set_is_encrypt(bool flag) { this->is_encrypt_ = flag; }
 

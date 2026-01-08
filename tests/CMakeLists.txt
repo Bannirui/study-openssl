@@ -13,3 +13,11 @@ add_dependencies(encrypt_test copy_assets)
 add_executable(decrypt_test decrypt_test.cpp)
 target_link_libraries(decrypt_test PUBLIC study-openssl)
 add_dependencies(decrypt_test copy_assets)
+
+add_executable(file_encrypt_test file_encrypt_test.cpp)
+target_link_libraries(file_encrypt_test PUBLIC study-openssl)
+add_dependencies(file_encrypt_test copy_assets)
+
+add_executable(file_decrypt_test file_decrypt_test.cpp)
+target_link_libraries(file_decrypt_test PUBLIC study-openssl)
+add_dependencies(file_decrypt_test copy_assets)

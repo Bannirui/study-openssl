@@ -8,7 +8,7 @@
 
 #include "x_crypt.h"
 
-void XCryptTask::Init(std::string& password)
+void XCryptTask::Init(const std::string& password)
 {
     this->enc_ = std::make_shared<XCrypt>();
     this->enc_->Init(password);

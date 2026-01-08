@@ -12,11 +12,11 @@
 
 int main()
 {
-    std::string pwd = "12345678";
+    std::string pwd         = "12345678";
+    std::string inFilePath  = "asset/tmp.txt";
+    std::string outFilePath = "asset/tmp_encrypt.txt";
 
     std::shared_ptr<std::pmr::memory_resource> memPool(new std::pmr::synchronized_pool_resource);
-    std::string                                inFilePath  = "asset/tmp.txt";
-    std::string                                outFilePath = "asset/tmp_encrypt.txt";
 
     std::shared_ptr<XReadTask> r_task = std::make_shared<XReadTask>();
     r_task->Init(inFilePath);
